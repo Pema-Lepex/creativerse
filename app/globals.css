@@ -43,17 +43,28 @@
     100% { opacity: 1; transform: translateY(0); }
   }
 
-  /* --- CUSTOM COLORS --- */
-  --color-primary-50: #F2F5F6;
-  --color-primary-100: #E6EBEE;
-  --color-primary-200: #C0CED4;
-  --color-primary-300: #99B0BB;
-  --color-primary-400: #4D7487;
-  --color-primary-500: #013954;
-  --color-primary-600: #01334C;
-  --color-primary-700: #012232;
-  --color-primary-800: #001A26;
-  --color-primary-900: #001119;
+ /* --- CUSTOM COLORS --- */
+  --color-primary-50: #EFF4F8;
+  --color-primary-100: #DCE6F0;
+  --color-primary-200: #B1C9DE;
+  --color-primary-300: #86ABCC;
+  --color-primary-400: #306EAA;
+  --color-primary-500: #0B2C56; /* The signature deep blue from the header */
+  --color-primary-600: #0A284E;
+  --color-primary-700: #071B34;
+  --color-primary-800: #051428;
+  --color-primary-900: #030D1B;
+  /* --- ACCENT COLORS --- */
+  --color-accent-50: #FFF9E6;
+  --color-accent-100: #FFF0BF;
+  --color-accent-200: #FFE28C;
+  --color-accent-300: #FFD359;
+  --color-accent-400: #F6B819; 
+  --color-accent-500: #EAA000; /* The vibrant gold from the CTA button */
+  --color-accent-600: #D18F00;
+  --color-accent-700: #9E6C00;
+  --color-accent-800: #6B4900;
+  --color-accent-900: #382600;
 
   /* Typo fixed: customOriange -> customOrange */
   --color-customOrange-100: #FFA202;

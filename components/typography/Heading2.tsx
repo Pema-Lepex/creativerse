@@ -8,21 +8,21 @@ const Heading2: React.FC<TextProps> = ({
   return (
     <h2
       className={`
-        text-2xl
-        xs:text-3xl
-        sm:text-4xl
-        md:text-5xl
-        lg:text-6xl
-        xl:text-7xl
-        2xl:text-[4.5rem]
-        3xl:text-[5.25rem]
-        4xl:text-[6rem]
-        5xl:text-[7rem]
-        6xl:text-[8rem]
-        tv-wide:text-[9rem]
-        8k:text-[10rem]
+         text-lg
+        xs:text-xl
+        sm:text-2xl
+        md:text-3xl
+        lg:text-4xl
+        xl:text-5xl
+        2xl:text-[3rem]
+        3xl:text-[3.5rem]
+        4xl:text-[4rem]
+        5xl:text-[4.5rem]
+        6xl:text-[5rem]
+        tv-wide:text-[6rem]
+        8k:text-[7rem]
         font-bold
-        leading-tight
+        leading-snug
         ${className}
       `}
     >
