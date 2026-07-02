@@ -1,1 +1,0 @@
-export { default as StudiosLogo } from "./iBEST_Studios_Logo.png";

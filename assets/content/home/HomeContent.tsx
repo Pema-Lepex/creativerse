@@ -1,5 +1,3 @@
-import { Slider1, Slider2, Slider3 } from "../../images";
-
 
 export const RecentNewsContents = {
     title: "Recent News",
@@ -7,7 +5,6 @@ export const RecentNewsContents = {
         {
             id: 1,
             title: "Internship Opportunity",
-            img: Slider1,
             description: "We have extended the deadline for the submission of the application for the 𝐢𝐧𝐭𝐞𝐫𝐧𝐬𝐡𝐢𝐩 𝐭𝐢𝐥𝐥 𝟏𝟏 𝐍𝐨𝐯𝐞𝐦𝐛𝐞𝐫 𝟐𝟎𝟐𝟎. Apply online via a Google Form Link https://bit.ly/2IoZsDD for the choice of your internship.",
             date: "2020-11-11",
             details: `The candidates must email CV and work samples at ibest69studios@gmail.com, please note that failure to submit these documents will lead to the disqualification of your application.
@@ -16,7 +13,6 @@ export const RecentNewsContents = {
         {
             id: 2,
             title: "Our Gyenkhu",
-            img:Slider2,
             description: "We would like to thank the Ministry of Health, Royal Government of Bhutan for bestowing us the recognition with the certificate of appreciation to our firm and the team members during the auspicious launch of #OurGyenkhu initiative.",
             date: "2020-11-11",
             details: `Our team members at the iBEST would like to convey our deepest respect and appreciation to Honorable Lyonpo Dechen Wangmo for her relentless and continued selfless leadership and effort along with her brave health workers and professionals; and selfless volunteers from various walks of life who are leading the battle against #coronavirus.
@@ -25,7 +21,6 @@ export const RecentNewsContents = {
         {
             id: 3,
             title: "Dragon Tales",
-            img: Slider3,
             description: "Dragon Tales - Stories for Children series will be launched on 5 February 2021 coinciding with the Birth Anniversary of HRH The Gyalsey. This series of stories is a gift to all our children in Bhutan and beyond from all of us at the iBEST STUDIOS.",
             date: "2020-11-11",
             details: `In our Bhutanese society storytelling has always played an important role in imparting timeless social beliefs, morals values besides entertainment. The storytelling through folktales, songs, dances, and other various means have brought people and communities together in the olden times.

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { StudiosLogo } from "@/assets";
+import { CreativerseLogo } from "@/assets";
 
 const FOOTER_LINKS = [
   {
@@ -80,7 +80,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900">
-               <Image src={StudiosLogo} alt="iBEST Studios" width={50} height={50} />
+               <Image src={CreativerseLogo} alt="iBEST Studios" width={50} height={50} />
               iBEST Studios
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">

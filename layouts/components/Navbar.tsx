@@ -2,21 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { StudiosLogo } from "@/assets";
 import Image from "next/image";
-
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Service", href: "/service" },
-  { label: "Experience", href: "/experience" },
-  { label: "Team", href: "/team" },
-  { label: "Job", href: "/job" },
-  { label: "Download", href: "/download" },
-];
+import { CreativerseLogo } from "@/assets";
+import { NAV_LINKS } from "./NavMenuList";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isLinkActive = (link: (typeof NAV_LINKS)[number]) => {
+  if (link.sub_menu) {
+    return link.sub_menu.some((sub) => pathname === sub.href);
+  }
+
+  return pathname === link.href;
+};
+  console.log("Current pathname:", pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -32,7 +35,6 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -48,33 +50,89 @@ export default function Navbar() {
           className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900"
           onClick={() => setIsOpen(false)}
         >
-          <Image src={StudiosLogo} alt="iBEST Studios" width={60} height={60} />
-  
+          <Image
+            src={CreativerseLogo}
+            alt="iBEST Studios"
+            // width={60}
+            // height={50}
+            className=" h-10
+                        xs:h-11
+                        sm:h-12
+                        md:h-14
+                        lg:h-16
+                        4xl:h-28
+                        5xl:h-32
+                        6xl:h-36
+                        tv-wide:h-40
+                        8k:h-48
+                        w-auto"
+          />
         </Link>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-primary-600"
-              >
-                {link.label}
-              </Link>
+            <li key={link.label} className="relative group">
+              {link.sub_menu ? (
+                <>
+                  <button
+  className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+    isLinkActive(link)
+      ? "text-primary-600 font-semibold"
+      : "text-slate-600 hover:text-primary-600"
+  }`}
+>  {link.label}
+
+                    <svg
+                      className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown */}
+                  <div className="invisible absolute right-0 top-full z-50 mt-2 w-72 rounded-xl border border-slate-200 bg-white opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <ul className="py-2">
+                      {link.sub_menu.map((sub) => (
+                        <li key={sub.href}>
+                          <Link
+  href={sub.href}
+  className={`block px-5 py-3 text-sm transition-colors ${
+    pathname === sub.href
+      ? "bg-primary-50 text-primary-600 font-semibold"
+      : "text-slate-600 hover:bg-slate-50 hover:text-primary-600"
+  }`}
+>
+  {sub.label}
+</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              ) : (
+                <Link
+  href={link.href}
+  className={`text-sm font-medium transition-colors ${
+    isLinkActive(link)
+      ? "text-primary-600 font-semibold"
+      : "text-slate-600 hover:text-primary-600"
+  }`}
+>
+  {link.label}
+</Link>
+              )}
             </li>
           ))}
         </ul>
-
-        {/* Desktop CTA buttons */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href="/contact"
-            className="rounded-full bg-primary-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-700"
-          >
-            Contact
-          </Link>
-        </div>
 
         {/* Mobile menu button */}
         <button
@@ -103,33 +161,88 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu panel */}
-      <div
-        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out md:hidden ${
-          isOpen ? "max-h-96" : "max-h-0"
-        }`}
-      >
+     <div
+  className={`transition-all duration-300 md:hidden ${
+    isOpen ? "max-h-[calc(100vh-80px)]" : "max-h-0"
+  } overflow-y-auto overflow-x-hidden`}
+>
         <ul className="flex flex-col gap-1 border-t border-slate-200 bg-white px-4 pb-4 pt-2">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block rounded-md px-3 py-2.5 text-base font-medium text-slate-700 transition-colors hover:bg-slate-50 hover:text-primary-600"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3">
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="rounded-full bg-primary-600 px-5 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-700"
+  {NAV_LINKS.map((link) => (
+    <li key={link.label}>
+      {link.sub_menu ? (
+        <>
+          <button
+            type="button"
+            onClick={() =>
+              setOpenSubMenu(
+                openSubMenu === link.label ? null : link.label
+              )
+            }
+            className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600"
+          >
+            {link.label}
+
+            <svg
+              className={`h-5 w-5 transition-transform duration-300 ${
+                openSubMenu === link.label ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
             >
-              Contact
-            </Link>
-          </li>
-        </ul>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <div
+            className={`overflow-hidden transition-all duration-300 ${
+              openSubMenu === link.label
+                ? "max-h-96 opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            <ul className="ml-4 mt-1 border-l border-slate-200">
+              {link.sub_menu.map((sub) => (
+                <li key={sub.href}>
+                  <Link
+                    href={sub.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block px-4 py-2 text-sm text-slate-600 hover:text-primary-600"
+                  >
+                    {sub.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : (
+        <Link
+          href={link.href}
+          onClick={() => setIsOpen(false)}
+          className="block rounded-md px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600"
+        >
+          {link.label}
+        </Link>
+      )}
+    </li>
+  ))}
+
+  <li className="mt-2 border-t border-slate-100 pt-3">
+    <Link
+      href="/contact"
+      onClick={() => setIsOpen(false)}
+      className="block rounded-full bg-primary-600 px-5 py-2.5 text-center text-sm font-semibold text-white hover:bg-primary-700"
+    >
+      Contact
+    </Link>
+  </li>
+</ul>
       </div>
     </header>
   );
