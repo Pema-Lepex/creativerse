@@ -55,16 +55,16 @@
   --color-primary-800: #051428;
   --color-primary-900: #030D1B;
   /* --- ACCENT COLORS --- */
-  --color-accent-50: #FFF9E6;
-  --color-accent-100: #FFF0BF;
-  --color-accent-200: #FFE28C;
-  --color-accent-300: #FFD359;
-  --color-accent-400: #F6B819; 
-  --color-accent-500: #EAA000; /* The vibrant gold from the CTA button */
-  --color-accent-600: #D18F00;
-  --color-accent-700: #9E6C00;
-  --color-accent-800: #6B4900;
-  --color-accent-900: #382600;
+  --color-accent-50:  #FFF8E6;
+  --color-accent-100: #FFEFC2;
+  --color-accent-200: #FFE08A;
+  --color-accent-300: #FFD152;
+  --color-accent-400: #FFC024;
+  --color-accent-500: #FFA800; /* Primary Accent */
+  --color-accent-600: #E69500;
+  --color-accent-700: #BF7B00;
+  --color-accent-800: #995F00;
+  --color-accent-900: #663F00;
 
   /* Typo fixed: customOriange -> customOrange */
   --color-customOrange-100: #FFA202;

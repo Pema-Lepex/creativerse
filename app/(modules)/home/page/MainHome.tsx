@@ -4,7 +4,7 @@ import { Heading1, Heading2, Heading3, Heading4 } from "@/components";
 
 const MainHome: React.FC = () => {
   return (
-    <div>
+    <div className="sm:px-6 lg:px-20">
       <OurStorySection />
     </div>
   );

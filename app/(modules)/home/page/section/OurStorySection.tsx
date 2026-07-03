@@ -6,7 +6,7 @@ import { CommonParagraph4, Heading4 } from "@/components";
 
 const OurStorySection: React.FC = () => {
   return (
-    <section className="px-10">
+    <section className="">
       <div className="flex flex-col items-center py-2">
         <Heading4 className="text-primary-600">{OurStoryContent.title}</Heading4>
         <CommonParagraph4 className="mt-4 leading-relaxed whitespace-pre-line text-center">{RenderFormattedText(OurStoryContent.content)}</CommonParagraph4>

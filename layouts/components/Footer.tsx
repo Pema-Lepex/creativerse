@@ -75,13 +75,12 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto 5xl:max-w-[3200px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div className="mx-auto 5xl:max-w-[3200px] px-4 py-12  sm:px-6 lg:px-20 lg:py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-6">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900">
-               <Image src={CreativerseLogo} alt="iBEST Studios" width={50} height={50} />
-              iBEST Studios
+               <Image src={CreativerseLogo} alt="Creativerse" height={150} width={50} className="h-10 w-auto xs:h-11 sm:h-12 md:h-14 lg:h-16 4xl:h-28 5xl:h-32 6xl:h-36 tv-wide:h-40 8k:h-48" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
               Tools for teams who ship fast. Build, launch, and grow your product without the busywork.
