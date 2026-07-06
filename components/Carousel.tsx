@@ -1,10 +1,12 @@
+"use client"
 import { SlideProps } from "@/types/CommonProps";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, ReactNode } from "react";
 import Image from "next/image";
 interface Props {
   slides: SlideProps[];
+  children?: ReactNode;
 }
-const Carousel: React.FC<Props> = ({ slides = [] }) => {
+const Carousel: React.FC<Props> = ({ slides = [], children }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -74,19 +76,28 @@ const Carousel: React.FC<Props> = ({ slides = [] }) => {
         />
       </div>
 
-      <button
-        onClick={prevSlide}
-        className="hidden size-10 text-xl group-hover:flex justify-center items-center absolute top-1/2 -translate-y-1/2 left-5 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full"
-      >
-        &#10094;
-      </button>
+      <div className="absolute inset-0 flex items-center justify-between px-5 pointer-events-none">
+  {/* Left Button */}
+  <button
+    onClick={prevSlide}
+    className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-black/30 hover:bg-black/50 rounded-full"
+  >
+    &#10094;
+  </button>
 
-      <button
-        onClick={nextSlide}
-        className="hidden size-10 text-xl group-hover:flex justify-center items-center absolute top-1/2 -translate-y-1/2 right-5 text-white bg-black/30 hover:bg-black/50 p-2 rounded-full"
-      >
-        &#10095;
-      </button>
+  {/* Dynamic Content */}
+  <div className="pointer-events-auto flex-1 flex justify-center">
+    {children}
+  </div>
+
+  {/* Right Button */}
+  <button
+    onClick={nextSlide}
+    className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-black/30 hover:bg-black/50 rounded-full"
+  >
+    &#10095;
+  </button>
+</div>
 
       <div className="absolute flex justify-center py-2 z-100 bottom-0 w-full lg:gap-3 md:gap-2 gap-1">
         {slides.map((_, index) => (
