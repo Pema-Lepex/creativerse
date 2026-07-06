@@ -1,20 +1,21 @@
-"use Client";
-import OurStorySection from "./section/OurStorySection";
-import { Heading1, Heading2, Heading3, Heading4 } from "@/components";
+import HeroSlider from "./section/HeroSlider";
+import TopIntroSection from "./section/TopIntroSection";
+import AboutCompanySection from "./section/AboutCompanySection";
+import ServicesGridSection from "./section/ServicesGridSection";
+import ClientsSection from "./section/ClientsSection";
+import RecentNewsSection from "./section/RecentNewsSection";
 
 const MainHome: React.FC = () => {
   return (
-    <div className="sm:px-6 lg:px-20">
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
-      <OurStorySection />
+    <div>
+      <HeroSlider />
+      <TopIntroSection />
+      <AboutCompanySection />
+      <ServicesGridSection />
+      {/* <ClientsSection /> */}
+      <RecentNewsSection />
     </div>
   );
 };
+
 export default MainHome;

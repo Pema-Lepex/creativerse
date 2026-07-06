@@ -1,12 +1,13 @@
-"use client"
+"use client";
 import { SlideProps } from "@/types/CommonProps";
 import React, { useState, useEffect, useCallback, ReactNode } from "react";
 import Image from "next/image";
 interface Props {
   slides: SlideProps[];
   children?: ReactNode;
+  hideDot?: boolean;
 }
-const Carousel: React.FC<Props> = ({ slides = [], children }) => {
+const Carousel: React.FC<Props> = ({ slides = [], children, hideDot }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -35,24 +36,41 @@ const Carousel: React.FC<Props> = ({ slides = [], children }) => {
   return (
     <div className="w-full m-auto relative group ">
       <div className="w-full overflow-hidden">
-        import Image from "next/image";
         <div className="w-full overflow-hidden rounded-xl">
           {slides.map((slide, index) => (
-            <Image
-              key={index}
-              src={slide.img}
-              alt={slide.title || `Slide ${index + 1}`}
-              width={1920}
-              height={1080}
-              priority={index === 0}
-              className={`
-        absolute inset-0
-        w-full h-auto
-        object-cover
-        transition-opacity duration-700 ease-in-out
-        ${index === currentIndex ? "opacity-100" : "opacity-0"}
-      `}
-            />
+            <React.Fragment key={index}>
+              <Image
+                src={slide.img}
+                alt={slide.title || `Slide ${index + 1}`}
+                width={1920}
+                height={1080}
+                priority={index === 0}
+                className={`
+                            absolute inset-0
+                            w-full h-auto
+                            object-cover
+                            transition-opacity duration-700 ease-in-out
+                            ${index === currentIndex ? "opacity-100" : "opacity-0"}
+               `}
+              />
+
+              {/* Per-slide unique content — add anything: buttons, styled text, etc. */}
+              {slide.content && (
+                <div
+                  className={`
+                            absolute inset-0 z-20
+                            transition-opacity duration-700 ease-in-out
+                            ${
+                              index === currentIndex
+                                ? "opacity-100 pointer-events-auto"
+                                : "opacity-0 pointer-events-none"
+                            }
+                          `}
+                >
+                  <div className="w-full h-full">{slide.content}</div>
+                </div>
+              )}
+            </React.Fragment>
           ))}
 
           {/* Keeps the container height */}
@@ -76,41 +94,42 @@ const Carousel: React.FC<Props> = ({ slides = [], children }) => {
         />
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-between px-5 pointer-events-none">
-  {/* Left Button */}
-  <button
-    onClick={prevSlide}
-    className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-black/30 hover:bg-black/50 rounded-full"
-  >
-    &#10094;
-  </button>
+      {hideDot ? (
+        <></>
+      ) : (
+        <div className="absolute flex justify-center py-2 z-100 bottom-0 w-full lg:gap-3 md:gap-2 gap-1">
+          {slides.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`cursor-pointer lg:text-5xl md:text-5xl text-3xl ${
+                index === currentIndex ? "text-accent-500" : "text-gray-400"
+              }`}
+            >
+              &bull;
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="absolute inset-0 z-30 flex items-center justify-between px-5 pointer-events-none">
+        {/* Left Button */}
+        <button
+          onClick={prevSlide}
+          className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-accent-500/20 hover:bg-accent-500 rounded-full"
+        >
+          &#10094;
+        </button>
 
-  {/* Dynamic Content */}
-  <div className="pointer-events-auto flex-1 flex justify-center">
-    {children}
-  </div>
+        {/* Shared content across all slides (optional) */}
+        <div className="pointer-events-auto">{children}</div>
 
-  {/* Right Button */}
-  <button
-    onClick={nextSlide}
-    className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-black/30 hover:bg-black/50 rounded-full"
-  >
-    &#10095;
-  </button>
-</div>
-
-      <div className="absolute flex justify-center py-2 z-100 bottom-0 w-full lg:gap-3 md:gap-2 gap-1">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`cursor-pointer lg:text-5xl md:text-5xl text-3xl ${
-              index === currentIndex ? "text-blue-500" : "text-gray-400"
-            }`}
-          >
-            &bull;
-          </div>
-        ))}
+        {/* Right Button */}
+        <button
+          onClick={nextSlide}
+          className="pointer-events-auto hidden group-hover:flex size-10 justify-center items-center text-xl text-white bg-accent-500/20 hover:bg-accent-500 rounded-full"
+        >
+          &#10095;
+        </button>
       </div>
     </div>
   );

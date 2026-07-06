@@ -1,10 +1,16 @@
 import MainLayout from "@/layouts/MainLayout";
+import MainAbout from "./page/MainAbout";
+
+export const metadata = {
+  title: "About Us | Creativerse",
+  description:
+    "Creativerse is a premiere Business Process Outsourcing (BPO) company based in Bhutan, delivering exceptional creative and technology services worldwide.",
+};
 
 const AboutUsPage = () => {
   return (
     <MainLayout>
-      <h1>About Us</h1>
-      <p>Welcome to the About Us page!</p>
+      <MainAbout />
     </MainLayout>
   );
 };
