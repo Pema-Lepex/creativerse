@@ -6,6 +6,14 @@ const MainHome: React.FC = () => {
   return (
     <div className="sm:px-6 lg:px-20">
       <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
+      <OurStorySection />
     </div>
   );
 };

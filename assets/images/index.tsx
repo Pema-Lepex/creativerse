@@ -1,1 +1,1 @@
-export { default as CreativerseLogo } from "./logo-img.svg";
+export * from './common'; 

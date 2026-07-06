@@ -26,13 +26,13 @@ const InfoNavbar: React.FC = () => {
         <div className="hidden md:flex items-center">
           <a
             href="#"
-            className="flex h-14 w-14 items-center justify-center bg-[#1877F2] text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#1877F2]"
+            className="flex h-14 w-12 items-center justify-center bg-[#1877F2] text-lg font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#1877F2]"
           >
             f
           </a>
           <a
             href="#"
-            className="flex h-14 w-14 items-center justify-center bg-[#0A66C2] text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#0A66C2]"
+            className="flex h-14 w-12 items-center justify-center bg-[#0A66C2] text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#0A66C2]"
           >
             in
           </a>
@@ -49,7 +49,7 @@ const InfoNavbar: React.FC = () => {
 
               <p className="font-bold">
                 +975 77886666
-              </p>
+              </p>  
             </div>
           </a>
         </div>
