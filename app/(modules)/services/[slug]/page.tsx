@@ -7,7 +7,6 @@ import {
   getServiceBySlug,
 } from "@/assets/content/services/ServicesContent";
 
-// Pre-render all 7 service pages at build time.
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }

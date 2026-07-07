@@ -31,6 +31,7 @@ const PageBanner: React.FC<PageBannerProps> = ({
         alt={title}
         fill
         priority
+        sizes="100vw"
         className="object-cover object-center"
       />
       {/* Overlay */}

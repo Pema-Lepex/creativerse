@@ -1,5 +1,4 @@
-// Content for all service-detail pages, ported from old_creativerse.
-// One entry per service, keyed by URL slug (matches NAV_LINKS in NavMenuList).
+
 
 export interface ServiceOffering {
   title: string;

@@ -10,7 +10,7 @@ export const SiteInfo = {
   shortAddress: "Changzamtog, Thimphu",
   hours: [
     { day: "Monday - Friday", time: "09:00 AM - 05:30 PM BST" },
-    { day: "Saturday", time: "09:00 AM - 02:00 PM BST" },
+    { day: "Saturday", time: "09:00 AM - 01:00 PM BST" },
     { day: "Sunday", time: "Closed" },
   ],
   mapEmbed:

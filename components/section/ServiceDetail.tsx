@@ -10,11 +10,6 @@ interface ServiceDetailProps {
   service: ServiceContent;
 }
 
-/**
- * Reusable service-detail template: page banner + left sidebar (service nav
- * and office info) + main content (hero image, intro, offerings list).
- * Every /services/[slug] route renders through this single component.
- */
 const ServiceDetail: React.FC<ServiceDetailProps> = ({ service }) => {
   return (
     <>
@@ -104,6 +99,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ service }) => {
               alt={service.title}
               fill
               priority
+              sizes="(max-width: 1024px) 100vw, 66vw"
               className="object-cover"
             />
           </div>

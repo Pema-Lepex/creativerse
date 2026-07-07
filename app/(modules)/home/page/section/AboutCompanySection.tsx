@@ -32,6 +32,7 @@ const AboutCompanySection: React.FC = () => {
             src={AboutCompany.image}
             alt="About Creativerse"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </div>
