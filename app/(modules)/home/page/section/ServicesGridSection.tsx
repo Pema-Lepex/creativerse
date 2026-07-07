@@ -5,7 +5,10 @@ import { SERVICES_SUMMARY } from "@/assets/content/common/SiteContent";
 
 const ServicesGridSection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden bg-primary-500 py-16 lg:py-24">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-primary-500 py-16 lg:py-24 scroll-mt-24"
+    >
       {/* subtle texture layer */}
       <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary-600/40 via-transparent to-primary-950/40" />
 
@@ -25,12 +28,12 @@ const ServicesGridSection: React.FC = () => {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES_SUMMARY.map((s) => {
-            const Icon = ICONS[s.icon] ?? ICONS.Code;
+          {SERVICES_SUMMARY.map((service) => {
+            const Icon = ICONS[service.icon] ?? ICONS.Code;
             return (
               <Link
-                key={s.href}
-                href={s.href}
+                key={service.href}
+                href={service.href}
                 className="group relative overflow-hidden bg-primary-950 p-8 text-center transition-colors duration-300 hover:bg-primary-900"
               >
                 {/* amber corner brackets */}
@@ -41,10 +44,10 @@ const ServicesGridSection: React.FC = () => {
                   <Icon className="h-11 w-11" strokeWidth={1.5} />
                 </div>
                 <h3 className="mt-5 text-xl font-bold capitalize text-white">
-                  {s.label}
+                  {service.label}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  {s.description}
+                  {service.description}
                 </p>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-500">
                   Learn More

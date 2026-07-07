@@ -2,19 +2,11 @@ import React from "react";
 
 interface SectionHeadingProps {
   eyebrow?: string;
-  /** Main heading text (rendered in the primary/navy colour) */
   title: string;
-  /** Optional trailing portion rendered in the accent colour */
   highlight?: string;
   align?: "left" | "center";
   className?: string;
 }
-
-/**
- * Reusable section heading matching the reference template: a small uppercase
- * grey eyebrow above a large navy Inter heading, with an optional amber
- * highlight word. Left-aligned headings show a 6px amber bar on the left.
- */
 const SectionHeading: React.FC<SectionHeadingProps> = ({
   eyebrow,
   title,
@@ -30,7 +22,6 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         centered ? "text-center" : "pl-6"
       } ${className}`}
     >
-      {/* Amber left bar (left-aligned only) */}
       {!centered && (
         <span className="absolute left-0 top-1 bottom-1 w-1.5 rounded-sm bg-accent-500" />
       )}

@@ -1,7 +1,15 @@
-import { PageBanner, SectionHeading } from "@/components";
-import { ICONS } from "@/components/section/iconMap";
+import {
+  CommonParagraph2,
+  CommonParagraph3,
+  CommonParagraph4,
+  Heading4,
+  PageBanner,
+  SectionHeading,
+} from "@/components";
 import { ContactContent } from "@/assets/content/contact/ContactContent";
-import ContactForm from "./ContactForm";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { ContactImage } from "@/assets";
 
 const { banner, form, details, map } = ContactContent;
 
@@ -18,43 +26,107 @@ const MainContact: React.FC = () => {
           highlight="Drop Us A Line!"
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <ContactForm />
-          </div>
+        {/* <div className="my-14 text-center lg:my-16">
+          <Heading4 className=" font-black text-[#1b364d] tracking-tight uppercase mb-2">
+            CONTACT US
+          </Heading4>
+          <CommonParagraph3 className="text-[#1b364d]/80 ">
+            We'd love to hear from you. Get in touch with our team!
+          </CommonParagraph3>
+        </div> */}
 
-          {/* Info cards */}
-          <div className="space-y-5">
-            {details.map((d) => {
-              const Icon = ICONS[d.icon] ?? ICONS.MapPin;
-              return (
-                <div
-                  key={d.title}
-                  className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-                >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50 text-primary-500">
-                    <Icon className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-bold text-primary-500">
-                      {d.title}
-                    </h3>
-                    {d.href ? (
-                      <a
-                        href={d.href}
-                        className="mt-1 block break-words text-sm text-body-text transition-colors hover:text-accent-500 md:text-base"
-                      >
-                        {d.value}
-                      </a>
-                    ) : (
-                      <p className="mt-1 text-sm text-body-text md:text-base">
-                        {d.value}
-                      </p>
-                    )}
-                  </div>
+        {/* 2. Top Content: Info and Office Image */}
+        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-16 mt-14 lg:mt-16">
+          {/* Contact Info Card */}
+          <div className="rounded-[2rem] border border-customOriange-200 bg-white p-8 shadow-sm md:p-10 lg:p-12">
+            <CommonParagraph4 className="text-orange-500 font-bold mb-8">
+              Get In Touch
+            </CommonParagraph4>
+
+            <div className="space-y-8">
+              {/* Visit Us */}
+              <div className="flex gap-4">
+                <div className="p-3 bg-blue-50 rounded-full h-fit">
+                  <MapPin className="w-5 h-5 4xl:w-10 4xl:h-10 5xl:w-14 5xl:h-14 text-[#1b364d]" />
                 </div>
-              );
-            })}
+                <div>
+                  <CommonParagraph2 className="font-bold text-gray-900">
+                    Visit Our Office
+                  </CommonParagraph2>
+                  <CommonParagraph3 className="text-gray-600">
+                    Changzamtog, Thimphu
+                  </CommonParagraph3>
+                  <CommonParagraph3 className="text-gray-600">
+                    Bhutan
+                  </CommonParagraph3>
+                </div>
+              </div>
+
+              {/* Call Us */}
+              <div className="flex gap-4">
+                <div className="p-3 bg-blue-50 rounded-full h-fit">
+                  <Phone className="w-5 h-5 4xl:w-10 4xl:h-10 5xl:w-14 5xl:h-14 text-[#1b364d]" />
+                </div>
+                <div>
+                  <CommonParagraph2 className="font-bold text-gray-900">
+                    Call Us
+                  </CommonParagraph2>
+                  <CommonParagraph3 className="text-gray-600">
+                    Toll free number: <span className="font-bold">2016</span>
+                  </CommonParagraph3>
+                  <CommonParagraph3 className="text-gray-600">
+                    Mobile number:{" "}
+                    <span className="font-bold">+975 77718721</span>
+                  </CommonParagraph3>
+                </div>
+              </div>
+
+              {/* Email Us */}
+              <div className="flex gap-4">
+                <div className="p-3 bg-blue-50 rounded-full h-fit">
+                  <Mail className="w-5 h-5 4xl:w-10 4xl:h-10 5xl:w-14 5xl:h-14 text-[#1b364d]" />
+                </div>
+                <div>
+                  <CommonParagraph2 className="font-bold text-gray-900">
+                    Email Us
+                  </CommonParagraph2>
+                  <CommonParagraph3 className="text-gray-600">
+                    support@educareskill.com
+                  </CommonParagraph3>
+                  <CommonParagraph3 className="text-sm text-gray-400">
+                    We'll respond as soon as possible.
+                  </CommonParagraph3>
+                </div>
+              </div>
+
+              {/* Office Hours */}
+              <div className="flex gap-4">
+                <div className="p-3 bg-blue-50 rounded-full h-fit">
+                  <Clock className="w-5 h-5 4xl:w-10 4xl:h-10 5xl:w-14 5xl:h-14 text-[#1b364d]" />
+                </div>
+                <div>
+                  <CommonParagraph2 className="font-bold text-gray-900">
+                    Office Hours
+                  </CommonParagraph2>
+                  <CommonParagraph3 className="text-gray-600">
+                    Monday - Friday: 9:30 AM - 5:30 PM
+                  </CommonParagraph3>
+                  <CommonParagraph3 className="text-gray-600">
+                    Saturday: 9:30 AM - 1:00 PM
+                  </CommonParagraph3>
+                  <CommonParagraph3 className="text-gray-600">
+                    Sunday: Closed
+                  </CommonParagraph3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="rounded-[2rem] overflow-hidden shadow-sm h-full">
+            <Image
+              src={ContactImage}
+              alt="iBEST Institute Building"
+              className="w-full h-full object-cover min-h-[400px]"
+            />
           </div>
         </div>
       </section>

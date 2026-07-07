@@ -13,15 +13,54 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
+  const [servicesInView, setServicesInView] = useState(false);
   const pathname = usePathname();
+
+  // Scroll-spy: mark the Services anchor link active only while the
+  // #services section is within the viewport.
+  useEffect(() => {
+    const el = document.getElementById("services");
+    if (!el) {
+      setServicesInView(false);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setServicesInView(entry.isIntersecting),
+      { rootMargin: "-40% 0px -40% 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [pathname]);
+
   const isLinkActive = (link: (typeof NAV_LINKS)[number]) => {
     if (link.sub_menu) {
       return link.sub_menu.some((sub) => pathname === sub.href);
     }
 
+    // In-page anchor links (e.g. "/#services") — active only while the
+    // target section is scrolled into view.
+    if (link.href.startsWith("/#")) {
+      return pathname === "/" && servicesInView;
+    }
+
     return pathname === link.href;
   };
-  console.log("Current pathname:", pathname);
+
+  // Smooth-scroll to an in-page anchor when we're already on that page,
+  // otherwise let <Link> navigate there (the hash scroll happens on load).
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    setIsOpen(false);
+    if (href.startsWith("/#") && pathname === "/") {
+      const el = document.getElementById(href.slice(2));
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -113,6 +152,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
                   className={`text-sm font-medium transition-colors ${
                     isLinkActive(link)
                       ? "text-accent-500 font-semibold"
@@ -209,7 +249,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
                   className={`block rounded-md px-3 py-2.5 text-base font-medium  ${
                     isLinkActive(link)
                       ? "text-accent-500 font-semibold"

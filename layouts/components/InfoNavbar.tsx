@@ -1,4 +1,11 @@
+import Image from "next/image";
 import { MailIcon, MapPin, PhoneIcon } from "lucide-react";
+import {
+  Instagramwhitelogo,
+  Instagramredlogo,
+  TiktokWhitelogo,
+  TiktokWBlacklogo,
+} from "@/assets";
 
 const InfoNavbar: React.FC = () => {
   return (
@@ -32,9 +39,41 @@ const InfoNavbar: React.FC = () => {
           </a>
           <a
             href="#"
-            className="flex h-14 w-12 items-center justify-center bg-[#0A66C2] text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#0A66C2]"
+            className="group flex h-14 w-12 items-center justify-center bg-[#E4405F] transition-all duration-300 hover:scale-105 hover:bg-white"
           >
-            in
+            <Image
+              src={Instagramwhitelogo}
+              alt="Instagram"
+              width={24}
+              height={24}
+              className="size-6 group-hover:hidden"
+            />
+            <Image
+              src={Instagramredlogo}
+              alt="Instagram"
+              width={24}
+              height={24}
+              className="hidden size-6 group-hover:block"
+            />
+          </a>
+          <a
+            href="#"
+            className="group flex h-14 w-12 items-center justify-center bg-black transition-all duration-300 hover:scale-105 hover:bg-white"
+          >
+            <Image
+              src={TiktokWhitelogo}
+              alt="TikTok"
+              width={24}
+              height={24}
+              className="size-6 group-hover:hidden"
+            />
+            <Image
+              src={TiktokWBlacklogo}
+              alt="TikTok"
+              width={24}
+              height={24}
+              className="hidden size-6 group-hover:block"
+            />
           </a>
           <a
             href="tel:+97577886666"

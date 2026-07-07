@@ -10,15 +10,9 @@ export interface Crumb {
 
 interface PageBannerProps {
   title: string;
-  /** Background image path (under /public) */
   image: string;
   breadcrumbs?: Crumb[];
 }
-
-/**
- * Full-width page-title banner with a background image, dark overlay,
- * heading and breadcrumb trail. Used by About, Contact and Service pages.
- */
 const PageBanner: React.FC<PageBannerProps> = ({
   title,
   image,
